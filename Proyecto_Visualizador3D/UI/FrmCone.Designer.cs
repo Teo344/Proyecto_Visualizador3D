@@ -39,7 +39,6 @@
             this.btnleft = new System.Windows.Forms.Button();
             this.btnUp = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.picCanvas = new System.Windows.Forms.PictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.homeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,6 +47,10 @@
             this.cuboToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pirámideToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.esféaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lbl2 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarZ)).BeginInit();
@@ -59,6 +62,10 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.PowderBlue;
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.lbl2);
             this.panel1.Controls.Add(this.btnZoomOut);
             this.panel1.Controls.Add(this.btnZoomIn);
             this.panel1.Controls.Add(this.trackBarY);
@@ -69,7 +76,6 @@
             this.panel1.Controls.Add(this.btnleft);
             this.panel1.Controls.Add(this.btnUp);
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.label1);
             this.panel1.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.panel1.Location = new System.Drawing.Point(476, 43);
             this.panel1.Name = "panel1";
@@ -186,16 +192,6 @@
             this.panel2.Size = new System.Drawing.Size(64, 62);
             this.panel2.TabIndex = 1;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Location = new System.Drawing.Point(126, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 16);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
-            // 
             // picCanvas
             // 
             this.picCanvas.Location = new System.Drawing.Point(12, 43);
@@ -270,6 +266,50 @@
             this.esféaToolStripMenuItem.Text = "Esféra";
             this.esféaToolStripMenuItem.Click += new System.EventHandler(this.esféaToolStripMenuItem_Click);
             // 
+            // lbl2
+            // 
+            this.lbl2.AutoSize = true;
+            this.lbl2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl2.ForeColor = System.Drawing.Color.Black;
+            this.lbl2.Location = new System.Drawing.Point(30, 298);
+            this.lbl2.Name = "lbl2";
+            this.lbl2.Size = new System.Drawing.Size(198, 22);
+            this.lbl2.TabIndex = 13;
+            this.lbl2.Text = "Rotación para adelante:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(30, 376);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(169, 22);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Rotación alrededor:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(30, 463);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(173, 22);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Rotación al costado:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(43, 23);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(202, 22);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "Botones de movimiento:";
+            // 
             // FrmCone
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -296,7 +336,6 @@
 
         #endregion
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnUp;
         private System.Windows.Forms.Button btnright;
@@ -315,5 +354,9 @@
         private System.Windows.Forms.ToolStripMenuItem cuboToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pirámideToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem esféaToolStripMenuItem;
+        private System.Windows.Forms.Label lbl2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
     }
 }
