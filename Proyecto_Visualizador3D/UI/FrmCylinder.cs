@@ -29,12 +29,7 @@ namespace Proyecto_Visualizador3D.UI
 
         private void picCanvas_Paint(object sender, PaintEventArgs e)
         {
-            Graphics g = e.Graphics;
-            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-
-            DrawGrid(g, picCanvas.ClientSize); // Dibuja cuadrícula 3D sincronizada
-
-            renderer.DrawFigure(g, figure, picCanvas.ClientSize); // Dibuja cilindro encima
+            renderer.DrawFigure(e.Graphics, figure, picCanvas.ClientSize);
         }
 
         private void KeyTimer_Tick(object sender, EventArgs e)
@@ -114,70 +109,69 @@ namespace Proyecto_Visualizador3D.UI
             this.Close();
         }
 
-        // -------------------------------
-        // Cuadrícula sincronizada con figura
-        // -------------------------------
-        private void DrawGrid(Graphics g, Size canvasSize, int spacing = 25, int range = 10)
+  
+
+        private void FrmCylinder_Load(object sender, EventArgs e)
         {
-            Pen gridPen = new Pen(Color.FromArgb(50, 180, 180, 180)); // Gris claro
-
-            List<Line3D> gridLines = new List<Line3D>();
-
-            for (int i = -range; i <= range; i++)
-            {
-                // Paralelas al eje Z
-                gridLines.Add(new Line3D(
-                    new Point3D(i * spacing, 0, -range * spacing),
-                    new Point3D(i * spacing, 0, range * spacing)
-                ));
-
-                // Paralelas al eje X
-                gridLines.Add(new Line3D(
-                    new Point3D(-range * spacing, 0, i * spacing),
-                    new Point3D(range * spacing, 0, i * spacing)
-                ));
-            }
-
-            foreach (var line in gridLines)
-            {
-                PointF p1 = Project3D(line.Start, figure);
-                PointF p2 = Project3D(line.End, figure);
-                g.DrawLine(gridPen, p1, p2);
-            }
-
-            gridPen.Dispose();
         }
 
-        private PointF Project3D(Point3D point, IFigure3D fig)
+        private void btnright_Click(object sender, EventArgs e)
         {
-            float x = point.X;
-            float y = point.Y;
-            float z = point.Z;
+            figure.OffsetX += 10;
+            picCanvas.Invalidate();
+        }
 
-            // Rotaciones
-            float cosX = (float)Math.Cos(fig.AngleX);
-            float sinX = (float)Math.Sin(fig.AngleX);
-            float cosY = (float)Math.Cos(fig.AngleY);
-            float sinY = (float)Math.Sin(fig.AngleY);
-            float cosZ = (float)Math.Cos(fig.AngleZ);
-            float sinZ = (float)Math.Sin(fig.AngleZ);
+        private void btnleft_Click(object sender, EventArgs e)
+        {
+            figure.OffsetX -= 10;
+            picCanvas.Invalidate();
+        }
 
-            float y1 = y * cosX - z * sinX;
-            float z1 = y * sinX + z * cosX;
+        private void btnUp_Click(object sender, EventArgs e)
+        {
+            figure.OffsetY -= 10;
+            picCanvas.Invalidate();
+        }
 
-            float x2 = x * cosY + z1 * sinY;
-            float z2 = -x * sinY + z1 * cosY;
+        private void btndown_Click(object sender, EventArgs e)
+        {
+            figure.OffsetY += 10;
+            picCanvas.Invalidate();
+        }
 
-            float x3 = x2 * cosZ - y1 * sinZ;
-            float y3 = x2 * sinZ + y1 * cosZ;
+        private void btnZoomIn_Click(object sender, EventArgs e)
+        {
+            figure.Zoom *= 1.1f;
+            picCanvas.Invalidate();
+        }
 
-            x3 *= fig.Zoom;
-            y3 *= fig.Zoom;
+        private void btnZoomOut_Click(object sender, EventArgs e)
+        {
+            figure.Zoom /= 1.1f;
+            picCanvas.Invalidate();
+        }
 
-            float screenX = picCanvas.Width / 2 + x3 + fig.OffsetX;
-            float screenY = picCanvas.Height / 2 - y3 + fig.OffsetY;
+        private float DegreesToRadians(int degrees)
+        {
+            return (float)(Math.PI * degrees / 180.0);
+        }
 
-            return new PointF(screenX, screenY);
+        private void trackBarX_Scroll(object sender, EventArgs e)
+        {
+            figure.AngleX = DegreesToRadians(trackBarX.Value);
+            picCanvas.Invalidate();
+        }
+
+        private void trackBarY_Scroll(object sender, EventArgs e)
+        {
+            figure.AngleY = DegreesToRadians(trackBarY.Value);
+            picCanvas.Invalidate();
+        }
+
+        private void trackBarZ_Scroll(object sender, EventArgs e)
+        {
+            figure.AngleZ = DegreesToRadians(trackBarZ.Value);
+            picCanvas.Invalidate();
         }
     }
 
