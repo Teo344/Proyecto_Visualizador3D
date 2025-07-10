@@ -27,7 +27,7 @@ namespace Proyecto_Visualizador3D
                     areaSize);
             }
 
-            Pen pen = Pens.DeepSkyBlue;
+            Pen pen = Pens.Red;
             for (int i = 0; i < edges.GetLength(0); i++)
             {
                 PointF p1 = projected[edges[i, 0]];
